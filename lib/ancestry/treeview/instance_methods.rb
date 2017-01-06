@@ -2,7 +2,7 @@ module Ancestry
   module InstanceMethods
     def tree(params = {})
       return '' unless self
-      subtree = (params[:to_depth].present? ? self.subtree(to_depth: params[:to_depth]) : self.subtree).order('path ASC')
+      subtree = (params[:to_depth].present? ? self.subtree(to_depth: params[:to_depth]) : self.subtree).order('position ASC')
       if params[:conditions].is_a?(Array) || params[:conditions].is_a?(Hash)
         subtree = subtree.where(params[:conditions])
       end
